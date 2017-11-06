@@ -37,6 +37,7 @@ class WaypointUpdater(object):
         rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
+        self.last_traffic_wp = -1
         rospy.Subscriber('/traffic_waypoint', Int32, self.traffic_cb)
         rospy.Subscriber('/obstacle_waypoint', Int32, self.obstacle_cb)
 
@@ -284,7 +285,7 @@ class WaypointUpdater(object):
         # Looking for when the light changes from green to red. Then assuming that light is yellow for 10 loops. Since the traffic data is coming in at 10 Hz
         #self.light_status = 0,1,2 : green,yellow,red
 
-        if (self.traffic_wp>0):
+        if (self.traffic_wp >= 0 and self.last_traffic_wp<0):
             self.light_status= 1
             self.light_loop_idx +=1
             if (self.light_loop_idx>YELLOW_THRESHOLD):
@@ -292,6 +293,8 @@ class WaypointUpdater(object):
         else:
             self.light_loop_idx=0
             self.light_status=0
+
+        self.last_traffic_wp = self.traffic_wp
 
         #rospy.loginfo('abhishek: self.light_loop_idx: %s, self.light_status= %s'%(self.light_loop_idx,self.light_status))
 
