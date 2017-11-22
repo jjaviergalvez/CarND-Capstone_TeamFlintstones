@@ -8,7 +8,7 @@ Shared project for completing the Udacity Self Driving Car Nano Degree Capstone 
 | Name                      | email                     |
 |---------------------------|---------------------------|
 | Abhishek Bhat             | abhishek.bhat04@gmail.com |
-| Jos� Javier G�lvez Gamboa | jjaviergalvez@hotmail.com |
+| José Javier Gálvez Gamboa | jjaviergalvez@hotmail.com |
 | Pawel Cisek               | pawel.a.cisek@gmail.com   |
 | Madhu Kakarala            | madhutrix@gmail.com.      |
 | Prashant Jain             | prashant.jain@gmail.com   |
